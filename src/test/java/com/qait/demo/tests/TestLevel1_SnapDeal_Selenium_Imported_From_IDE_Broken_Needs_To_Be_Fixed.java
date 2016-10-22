@@ -13,11 +13,16 @@
 
 package com.qait.demo.tests;
 
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
+
 import org.testng.annotations.*;
+
 import static org.testng.Assert.*;
+
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -29,7 +34,9 @@ public class TestLevel1_SnapDeal_Selenium_Imported_From_IDE_Broken_Needs_To_Be_F
 
   @BeforeClass(alwaysRun = true)
   public void setUp() throws Exception {
-    driver = new FirefoxDriver();
+	  System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+	  driver=new ChromeDriver();
+	  //driver = new FirefoxDriver();
     baseUrl = "https://www.snapdeal.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
@@ -42,9 +49,12 @@ public class TestLevel1_SnapDeal_Selenium_Imported_From_IDE_Broken_Needs_To_Be_F
     driver.findElement(By.id("inputValEnter")).sendKeys("mobile");
     driver.findElement(By.xpath("//button[@onclick=\"submitSearchForm('go_header');\"]")).click();
     driver.findElement(By.xpath("(//img[contains(@class,'product-image')])[1]")).click();
-    driver.findElement(By.xpath("//div[@id='add-cart-button-id']/span")).click();
-    driver.findElement(By.linkText("Proceed To Checkout")).click();
+    ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+    driver.switchTo().window(tabs.get(1));
+    driver.findElement(By.cssSelector("#add-cart-button-id")).click();
+    driver.findElement(By.cssSelector(".btn.marR5")).click();
   }
+  
 
   @AfterClass(alwaysRun = true)
   public void tearDown() throws Exception {

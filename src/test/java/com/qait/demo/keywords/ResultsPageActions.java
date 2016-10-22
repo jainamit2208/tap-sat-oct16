@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -42,13 +43,13 @@ public class ResultsPageActions extends GetPage {
 
 
 	public void clickFirstProduct() {
-		// TODO Auto-generated method stub
+		driver.findElement(By.xpath("(//img[contains(@class,'product-image')])[1]")).click();
 		
 	}
 
 
 	public void verifyResults(String yamlValue) {
-		// TODO Auto-generated method stub
+		driver.findElement(By.cssSelector(".top-cat-name")).isDisplayed();
 		
 	}
 	

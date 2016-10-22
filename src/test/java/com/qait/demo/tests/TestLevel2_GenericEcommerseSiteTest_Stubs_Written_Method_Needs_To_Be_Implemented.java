@@ -65,6 +65,7 @@ public class TestLevel2_GenericEcommerseSiteTest_Stubs_Written_Method_Needs_To_B
 	
 	@Test()
 	public void TestStep4_AddProductToCart(){
+		
 		test.productDetailsPage.AddTheProductToCart();
 	}
 	

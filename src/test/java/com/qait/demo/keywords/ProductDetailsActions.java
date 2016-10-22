@@ -31,7 +31,11 @@ public class ProductDetailsActions extends GetPage {
 	}
 
 	public void AddTheProductToCart() {
-		// TODO Auto-generated method stub
+		HomePageActions driverobject = new HomePageActions(driver);
+		
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		    driver.switchTo().window(tabs.get(1));
+		    driver.findElement(By.cssSelector("#add-cart-button-id")).click();
 		
 	}
 

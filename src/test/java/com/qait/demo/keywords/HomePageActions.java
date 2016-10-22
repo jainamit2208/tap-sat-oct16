@@ -158,12 +158,15 @@ public class HomePageActions extends GetPage {
 	}
 
 	public void clickSearchIcon() {
-		// TODO Auto-generated method stub
+		driver.findElement(By.xpath("//button[@onclick=\"submitSearchForm('go_header');\"]")).click();
 		
 	}
 
 	public void clickFirstProduct() {
-		// TODO Auto-generated method stub
+		driver.findElement(By.xpath("(//img[contains(@class,'product-image')])[1]")).click();
 		
+	}
+	public WebDriver returndriver(){
+		return driver;
 	}
 }
